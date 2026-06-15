@@ -21,7 +21,7 @@ clear all
 global data "C:\Users\selcuk.beduk\Dropbox\Research\Projects\DECIPHE\Papers\Paper 3 - Intergenerational persistence\Data"
 global results "C:\Users\selcuk.beduk\Dropbox\Research\Projects\DECIPHE\Papers\Paper 3 - Intergenerational persistence\Submission\ESR\2nd revision\Results_r2"
 cd "C:\Users\selcuk.beduk\Dropbox\Research\Projects\DECIPHE\Papers\Paper 3 - Intergenerational persistence\Data"	
-	
+graph set window fontface "Helvetica"	
 	
 	use cohco, clear 
 	collapse (mean) IPHcoh IPHcohse IPHodd IPHoddse IPHmodd IPHmoddse owneri* parowner owners* up* down* renters* mob* immob* (sem) ownerise=owneri parownerse=parowner [aw=cweight_p], by(cohort_5)	
@@ -55,7 +55,7 @@ cd "C:\Users\selcuk.beduk\Dropbox\Research\Projects\DECIPHE\Papers\Paper 3 - Int
 			graphregion(margin(medlarge)) plotregion(margin(medlarge)) ///
 			text( 0.75 1950.5 "70%" , size(small)) text( 0.39 1980 "44%" , size(small)) ///
 			text( 0.57 1950.5 "62%" , c(gs5) size(small)) text( 0.79 1980 "74%" , c(gs5) size(small)) ///
-			scheme(Lean2) ysize(2.5) xsize(4) scale(1.2) name(EUownercoh, replace)  
+			scheme(Lean2) ysize(2.5) xsize(4) scale(1.15) name(EUownercoh, replace)  
 	graph save "${results}\F1_iph.eps", replace 
 	graph save "${results}\F1_iph.gph", replace 
 	graph export "${results}\F1_iph.png", replace 		
@@ -148,13 +148,13 @@ cd "C:\Users\selcuk.beduk\Dropbox\Research\Projects\DECIPHE\Papers\Paper 3 - Int
 	foreach x in 50 75 {
 		gen parowner`x'=parowner if cohort_5==19`x'
 		bysort country: egen parownert`x'=min(parowner`x')
-		foreach y in IPHcoh IPHodd ownerspr uppr renterspr downpr { 
+		foreach y in IPHcoh IPHmodd ownerspr uppr renterspr downpr { 
 			gen `y'`x'=`y'_byc if cohort_5==19`x'
 			bysort country: egen `y't`x'=min(`y'`x')
 			}
 		}
 		
-	foreach y in IPHcoh IPHodd ownerspr uppr renterspr downpr parowner	{
+	foreach y in IPHcoh IPHmodd ownerspr uppr renterspr downpr parowner	{
 		gen dif`y'=`y't75-`y't50
 		gen difr`y'=dif`y'/`y't50
 	}	
