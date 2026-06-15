@@ -44,39 +44,38 @@ graph set window fontface "Helvetica"
 	// FIGURE 1		
 	// Homeownership of parents and children by cohort 
 	twoway (line owneripr parowner cohort, lw(medthick medthick) lc(black gs5)) ///
-		(rarea parownerll parownerul cohort, fcolor(gray%15) lw(vvthin)) ///
-		(rarea owneriprll owneriprul cohort, fcolor(gray%15) lw(vvthin)), ///
+		(rarea parownerll parownerul cohort, fcolor(gray%20) lw(none)) ///
+		(rarea owneriprll owneriprul cohort, fcolor(gray%20) lw(none)), ///
 			legend(order(2 "Homeowner parent" 1 "Homeowner children" ) pos(3)) ///
-			ylabel(0 .2 "20%" .4 "40%" .6 "60%" .8 "80%" 1 "100%", grid gmin gmax glcolor(gs10) glp(dash)) ///
+			ylabel(0 .2 "20%" .4 "40%" .6 "60%" .8 "80%" 1 "100%", grid gmin gmax glcolor(gs12) glp(shortdash)) ///
 			xlabel(1950 "1951-54" 1955 "1955-59" 1960 "1960-64" 1965 "1965-69" ///
 				1970 "1970-74" 1975 "1975-79" 1980 "1980-84", ///
-				angle(45) grid gmin gmax glcolor(gs10) glp(dash)) ///
+				angle(45) grid gmin gmax glcolor(gs12) glp(shortdash)) ///
 			ytitle(Prevalence) xtitle(Children's birth cohort) ///
 			graphregion(margin(medlarge)) plotregion(margin(medlarge)) ///
 			text( 0.75 1950.5 "70%" , size(small)) text( 0.39 1980 "44%" , size(small)) ///
 			text( 0.57 1950.5 "62%" , c(gs5) size(small)) text( 0.79 1980 "74%" , c(gs5) size(small)) ///
-			scheme(Lean2) ysize(2.5) xsize(4) scale(1.15) name(EUownercoh, replace)  
-	graph save "${results}\F1_iph.eps", replace 
+			scheme(Lean2) ysize(2.5) xsize(4.5) scale(1.1) name(EUownercoh, replace)  
 	graph save "${results}\F1_iph.gph", replace 
-	graph export "${results}\F1_iph.png", replace 		
+	graph export "${results}\F1_iph.jpg", width(2700) replace 
 		
 		
 	
 	// FIGURE 2
 	// Relative mobility i.e., IPH 
 	twoway (line IPHcoh cohort , lc(black) lw(medthick)) ///
-		(rarea IPHcohll IPHcohul cohort, fcolor(gray%15) lw(vvthin)), ///
-			ylabel(0(.05).30, grid gmin gmax glcolor(gs10) glp(dash)) ytitle(IPH) ///
+		(rarea IPHcohll IPHcohul cohort, fcolor(gray%15) lw(none)), ///
+			ylabel(0(.05).30, grid gmin gmax glcolor(gs12) glp(shortdash)) ytitle(IPH) ///
 			xlabel(1950 "1951-54" 1955 "1955-59" 1960 "1960-64" 1965 "1965-69" ///
-				1970 "1970-74" 1975 "1975-79" 1980 "1980-84", angle(45) grid gmin gmax glcolor(gs10) glp(dash)) ///
+				1970 "1970-74" 1975 "1975-79" 1980 "1980-84", angle(45) grid gmin gmax glcolor(gs12) glp(shortdash)) ///
 			ytitle(IPH) xtitle(Cohort) title("A. IPH", pos(11)) legend(off) scheme(Lean2) name(EUiph, replace) 		
 		
 	// Marginal odds ratio 
 	twoway (line IPHmodd cohort , lc(black) lw(medthick)) ///
-		(rarea IPHmoddll IPHmoddul cohort, fcolor(gray%15) lw(vvthin)), ///
-			ylabel(1(0.5)3, grid gmin gmax glcolor(gs10) glp(dash)) ytitle(IPH) ///
+		(rarea IPHmoddll IPHmoddul cohort, fcolor(gray%15) lw(none)), ///
+			ylabel(1(0.5)3, grid gmin gmax glcolor(gs12) glp(shortdash)) ytitle(IPH) ///
 			xlabel(1950 "1950-54" 1955 "1955-59" 1960 "1960-64" 1965 "1965-69" ///
-			1970 "1970-74" 1975 "1975-79" 1980 "1980-84", angle(45) grid gmin gmax glcolor(gs10) glp(dash)) ///
+			1970 "1970-74" 1975 "1975-79" 1980 "1980-84", angle(45) grid gmin gmax glcolor(gs12) glp(shortdash)) ///
 			ytitle(Marginal odds ratio) xtitle(Cohort) title("B. Marginal odds ratio", pos(11)) ///
 			legend(off)  ysize(3) xsize(4.5) scheme(Lean2) name(EUmodd, replace)	
 			
@@ -87,40 +86,38 @@ graph set window fontface "Helvetica"
 	label var pro "Pr(ownership) with renter parents (p{subscript:ro}))"
 		
 	twoway (line poo pro cohort, lw(medthick medthick) lp(longdash shortdash)), ///
-		ylabel(0 .2 "20%" .4 "40%" .6 "60%" .8 "80%" 1 "100%", grid gmin gmax glcolor(gs10) glp(dash)) ///
+		ylabel(0 .2 "20%" .4 "40%" .6 "60%" .8 "80%" 1 "100%", grid gmin gmax glcolor(gs12) glp(shortdash)) ///
 			xlabel(1950 "1951-54" 1955 "1955-59" 1960 "1960-64" 1965 "1965-69" ///
-			1970 "1970-74" 1975 "1975-79" 1980 "1980-84", angle(45) grid gmin gmax glcolor(gs10) glp(dash)) ///
+			1970 "1970-74" 1975 "1975-79" 1980 "1980-84", angle(45) grid gmin gmax glcolor(gs12) glp(shortdash)) ///
 			ytitle(Probability of homeownership) xtitle(Cohort) title("C. p{subscript:oo} and p{subscript:ro}", pos(11)) /// 
 			text( 0.76 1964 "p{subscript:oo}" , size(medium)) ///
 			text( 0.43 1967 "p{subscript:ro}" , size(medium)) ///
 			legend(off) scheme(Lean2) name(EUpoopro, replace)
 	
 			
-	graph combine EUiph EUmodd EUpoopro, xcommon cols(3) ysize(2.5) xsize(6.5) scale(*1.2)
-	graph save "${results}\F2_iph.eps", replace 
+	graph combine EUiph EUmodd EUpoopro, xcommon cols(3) ysize(2.5) xsize(6.25) scale(*1.2)
 	graph save "${results}\F2_iph.gph", replace 
-	graph export "${results}\F2_iph.png", replace 
+	graph export "${results}\F2_iph.jpg", width(3750) replace 
 	
 	
 	
 	// FIGURE 3
 	// Absolute mobility by cohort 
 	twoway (line mobpr downpr uppr cohort, lw(medthick medthick medthick) lc(stc1 stc4 stc2)) ///
-		(rarea mobprll mobprul cohort, fcolor(stc1%15) lw(vvthin)) ///
-		(rarea upprll upprul cohort, fcolor(stc2%15) lw(vvthin)) ///
-		(rarea downprll downprul cohort, fcolor(stc4%15) lw(vvthin)), ///
+		(rarea mobprll mobprul cohort, fcolor(stc1%15) lw(none)) ///
+		(rarea upprll upprul cohort, fcolor(stc2%15) lw(none)) ///
+		(rarea downprll downprul cohort, fcolor(stc4%15) lw(none)), ///
 			legend(order(1 "Total" 2 "Downward" 3 "Upward") cols(1) pos(3)) ///
 			xlabel(1950 "1951-54" 1955 "1955-59" 1960 "1960-64" 1965 "1965-69" ///
-					1970 "1970-74" 1975 "1975-79" 1980 "1980-84", angle(45) grid gmin gmax glcolor(gs12)) ///
-			ylabel(0 .15 "15%" .3 "30%" .45 "45%" .6 "60%", grid gmin gmax glcolor(gs12)) ///
+					1970 "1970-74" 1975 "1975-79" 1980 "1980-84", angle(45) grid gmin gmax glcolor(gs12) glp(shortdash)) ///
+			ylabel(0 .15 "15%" .3 "30%" .45 "45%" .6 "60%", grid gmin gmax glcolor(gs12) glp(shortdash)) ///
 			ytitle(Mobility rate) xtitle(Cohort) graphregion(margin(medlarge)) plotregion(margin(medlarge)) ///
 			text( 0.275 1950.5 "0.23" , c(stc2) size(small)) text( 0.045 1979.35 "0.08" , c(stc2) size(small)) ///
 			text( 0.10 1950.5 "0.14" , c(stc4) size(small)) text( 0.4175 1979.35 "0.38" , c(stc4) size(small)) ///
 			text( 0.42 1950.5 "0.37" , c(stc1) size(small)) text( 0.515 1979.35 "0.47" , c(stc1) size(small)) ///
-			scheme(Lean2) ysize(2.5) xsize(4) scale(1.2) name(EUmobcoh, replace) 
-	graph save "${results}\F3_iph.eps", replace 
+			scheme(Lean2) ysize(2.5) xsize(4) scale(1.1) name(EUmobcoh, replace) 
 	graph save "${results}\F3_iph.gph", replace 
-	graph export "${results}\F3_iph.png", replace 
+	graph export "${results}\F3_iph.jpg", width(2400) replace 
 		
 		
 		
@@ -162,25 +159,26 @@ graph set window fontface "Helvetica"
 	gen updown=downpr_byc+uppr_byc
 	gen difupdown=difdownpr+difuppr
 			
-	graph bar difIPHcoh, over(country, axis(noline) sort(1)) bar(1, col(black)) hori blabel(total, format(%9.2f) pos(2) size(vsmall)) yline(0) ylabel(, grid gmin gmax) title(IPH {&Delta}) ytitle("") name(iphdif, replace)
+	graph bar difIPHcoh, over(country, axis(noline) sort(1)) bar(1, col(black)) hori blabel(total, format(%9.2f) pos(2) size(vsmall)) yline(0) ylabel(, grid gmin gmax glc(gs12) glp(shortdash)) title(IPH {&Delta}) ytitle("") name(iphdif, replace)
 	
-	graph bar difupdown, over(country, axis(noline) sort(difIPHcoh)) bar(1, col(stc1))  hori blabel(total, format(%9.2f) pos(2) size(vsmall)) yline(0) ylabel(-.2(.1).2, grid gmin gmax) title(Total mobility {&Delta}) ytitle("") name(updowndif, replace)	
+	graph bar difupdown, over(country, axis(noline) sort(difIPHcoh)) bar(1, col(stc1))  hori blabel(total, format(%9.2f) pos(2) size(vsmall)) yline(0) ylabel(-.2(.1).2, grid gmin gmax glc(gs12) glp(shortdash)) title(Total mobility {&Delta}) ytitle("") name(updowndif, replace)	
 	
-	graph bar difuppr, over(country, axis(noline) sort(difIPHcoh)) bar(1, col(stc2)) hori blabel(total, format(%9.2f) pos(2) size(vsmall)) yline(0) ylabel(0(-.1)-.3, grid gmin gmax) title(Upward {&Delta}) ytitle("") name(updif, replace)
+	graph bar difuppr, over(country, axis(noline) sort(difIPHcoh)) bar(1, col(stc2)) hori blabel(total, format(%9.2f) pos(2) size(vsmall)) yline(0) ylabel(0(-.1)-.3, grid gmin gmax glc(gs12) glp(shortdash)) title(Upward {&Delta}) ytitle("") name(updif, replace)
 	
-	graph bar difdownpr, over(country, axis(noline) sort(difIPHcoh)) bar(1, col(stc4))  hori blabel(total, format(%9.2f) pos(2) size(vsmall)) yline(0) title(Downward {&Delta}) ytitle("") name(downdif, replace)
+	graph bar difdownpr, over(country, axis(noline) sort(difIPHcoh)) bar(1, col(stc4))  hori blabel(total, format(%9.2f) pos(2) size(vsmall)) yline(0) ylabel(, grid gmin gmax glc(gs12) glp(shortdash)) title(Downward {&Delta}) ytitle("") name(downdif, replace)
 						
 	graph combine iphdif updowndif updif downdif, cols(4) name(cohD, replace)		
 		
-	graph twoway (scatter difIPHcoh difupdown, mlabel(country)) (lfit difIPHcoh difupdown, lp(solid) lw(medthick)), ///
-		yline(0, lp(dash)) xline(0, lp(dash)) ///
-		ytitle(IPH {&Delta}) xtitle(Total mobility {&Delta}) ///
-		ylabel(, grid gmin gmax glcolor(gs12)) xlabel(-.2(.1).2, grid gmin gmax glcolor(gs12)) ///
-		legend(off) scheme(Lean2) name(rac, replace) fxsize(75)
-	graph combine cohD rac,  ysize(3) xsize(6.5) scale(*1.2)
-	graph save "${results}\F4_iph.eps", replace 
+	graph twoway (scatter difIPHcoh difupdown, mlabel(country)) ///
+		(lfit difIPHcoh difupdown, lp(solid) lw(medthick)), ///
+			yline(0, lp(dash)) xline(0, lp(dash)) ///
+			ytitle(IPH {&Delta}) xtitle(Total mobility {&Delta}) ///
+			ylabel(, grid gmin gmax glcolor(gs12) glp(shortdash)) ///
+			xlabel(-.2(.1).2, grid gmin gmax glcolor(gs12) glp(shortdash)) ///
+			legend(off) scheme(Lean2) name(rac, replace) fxsize(75)
+	graph combine cohD rac,  ysize(3) xsize(6.25) scale(*1.2)
 	graph save "${results}\F4_iph.gph", replace 
-	graph export "${results}\F4_iph.png", replace				
+	graph export "${results}\F4_iph.jpg", width(3750) replace				
 				
 	
 	  			
@@ -196,10 +194,11 @@ graph set window fontface "Helvetica"
 	foreach x in poo pro { 
 		twoway (scatter IPHcoh_byc `x', mlabel(country_s)) (lfit IPHcoh_byc `x', lp(solid solid) lw(medthick medthick)), ///
 			ytitle(IPH) name(`x', replace) ///
-			ylabel(, grid gmin gmax glcolor(gs12)) xlabel(0(.2)1, grid gmin gmax glcolor(gs12)) ///
+			ylabel(, grid gmin gmax glcolor(gs12)) xlabel(0(.2)1, grid gmin gmax glcolor(gs12) glp(shortdash)) ///
 			legend(off) scheme(Lean2)
 	}
-	graph combine poo pro, name(po1, replace) title("A. Association between IPH and its components", size(medium) margin(medium))
+	graph combine poo pro, name(po1, replace) ///
+		title("A. Association between IPH and its components", size(medium) margin(medium) pos(11))
 
 	label var uppr_byc "Upward mobility"
 	label var downpr_byc "Downward mobility"
@@ -211,19 +210,18 @@ graph set window fontface "Helvetica"
 	margins, dydx(c.uppr_byc c.downpr_byc) at(parowner=(.42(.05).92 .95)) post		
 	marginsplot, ///	
 		xlabel(0.42 "Min(42%)" 0.5 "50%" .63 "1stQ(65%)" 0.75 "Median(75%)" ///
-			0.84 "3rdQ(84%)" .95 "Max(95%)", angle(45) grid gmin gmax glcolor(gs12)) ///
-		ylabel(-.1(.02).01, grid gmin gmax glcolor(gs12)) yline(0) ///
+			0.84 "3rdQ(84%)" .95 "Max(95%)", angle(45) grid gmin gmax glcolor(gs12) glp(shortdash)) ///
+		ylabel(-.1(.02).01, grid gmin gmax glcolor(gs12) glp(shortdash)) yline(0) ///
 		legend(order(3 "Upward mobility" 4 "Downward mobility") pos(6) cols(2)) ///
 		ytitle(AME on IPH) xtitle(Parental homeownership level) title(" ") ///
 		recast(line) plot1opts(lc(stc2) lp(dash)) plot2opts(lc(stc4) lp(longdash)) ///
-		recastci(rarea) ci1opts(fcolor(stc2%15) lw(vvthin)) ci2opts(fcolor(stc4%15) lw(vvthin)) ///
+		recastci(rarea) ci1opts(fcolor(stc2%15) lw(none)) ci2opts(fcolor(stc4%15) lw(none)) ///
 		scheme(Lean2) name(uppr_bycw, replace) fxsize(75) scale(*.95) ///
 		title("B. Effect of upward & downward mobility on IPH" "by parental homeownership distribution", size(medium) margin(medium))
 			
-	graph combine po1 uppr_bycw, imargin(medlarge) ysize(3) xsize(6.5) scale(*1.2)
-	graph save "${results}\F5_iph.eps", replace 
+	graph combine po1 uppr_bycw, imargin(large) ysize(3) xsize(6.25) scale(*1.1)
 	graph save "${results}\F5_iph.gph", replace 
-	graph export "${results}\F5_iph.png", replace		
+	graph export "${results}\F5_iph.jpg", width(3750) replace		
 		
 		
 		
@@ -287,21 +285,21 @@ graph set window fontface "Helvetica"
 
 	line uppr up_cf cohort_5, lc(stc2 stc2) lp(solid dash) ///
 		ytitle(Mobility rate) xtitle(Cohort) legend(off) ///
-		xlabel(, grid gmin gmax glcolor(gs12)) ///
-		ylabel(0 .1 "10%" .2 "20%" .3 "30%" .4 "40%", grid gmin gmax glcolor(gs12)) ///
+		xlabel(, grid gmin gmax glcolor(gs12) glp(shortdash)) ///
+		ylabel(0 .1 "10%" .2 "20%" .3 "30%" .4 "40%", grid gmin gmax glcolor(gs12) glp(shortdash)) ///
 		text(0.14 1973 "Observed", size(small)) ///
 		text(0.068 1976.5 "Counterfactual", size(small)) ///
-		name(cf2_avu, replace)  title(Upward mobility)  
+		name(cf2_avu, replace)  title(Upward mobility, size(medium))  
 
 	line downpr down_cf cohort_5, lc(stc4 stc4) lp(solid dash) ///
 	ytitle(Mobility rate) xtitle(Cohort) legend(off) ///
-	xlabel(, grid gmin gmax glcolor(gs12)) ///
-	ylabel(0 .1 "10%" .2 "20%" .3 "30%" .4 "40%", grid gmin gmax glcolor(gs12)) ///
+	xlabel(, grid gmin gmax glcolor(gs12) glp(shortdash)) ///
+	ylabel(0 .1 "10%" .2 "20%" .3 "30%" .4 "40%", grid gmin gmax glcolor(gs12) glp(shortdash)) ///
 	text(0.37 1975.5 "Observed", size(small)) ///
 	text(0.265 1974.5 "Counterfactual", size(small)) ///
-	name(cf2_avd, replace)  title(Downward mobility) 
+	name(cf2_avd, replace)  title(Downward mobility, size(medium)) 
 
-	graph combine cf2_avu cf2_avd, title(A. Average European across cohorts, size(medium) margin(medium)) name(cf2_av, replace) imargin(small)
+	graph combine cf2_avu cf2_avd, title(A. Average European across cohorts, size(medium) margin(medium) pos(11)) name(cf2_av, replace) imargin(small)
 
 			
 	// Across countries: If odds ratio is fixed to the rate of 1950s cohorts, what would be the mobility rates for later cohorts given observed margins 		
@@ -362,26 +360,26 @@ graph set window fontface "Helvetica"
 	gen renters_cf = parenter - xcf         // renter-renter
 
 
-	twoway (scatter uppr_byc up_cf, ml(country) mlabc(stc2) mc(stc2)) ///
+	twoway (scatter uppr_byc up_cf, ml(country) mlabsize(vsmall) mlabc(stc2) mc(stc2)) ///
 		(function y=x, range(0 .4) lp(dash) lw(medthick)), ///
-		ytitle(Observed) xtitle(Counterfactual) title(Upward mobility) legend(off) ///
-		xlabel(0 .1 "10%" .2 "20%" .3 "30%" .4 "40%", grid gmin gmax glcolor(gs12)) ///
-		ylabel(0 .1 "10%" .2 "20%" .3 "30%" .4 "40%", grid gmin gmax glcolor(gs12)) ///
+		ytitle(Observed) xtitle(Counterfactual) title(Upward mobility, size(medium)) legend(off) ///
+		xlabel(0 .1 "10%" .2 "20%" .3 "30%" .4 "40%", grid gmin gmax glcolor(gs12) glp(shortdash)) ///
+		ylabel(0 .1 "10%" .2 "20%" .3 "30%" .4 "40%", grid gmin gmax glcolor(gs12) glp(shortdash)) ///
 		name(cf2_b1, replace)   
 
-	twoway (scatter downpr_byc down_cf, ml(country) mlabc(stc4) mc(stc4)) ///
+	twoway (scatter downpr_byc down_cf, ml(country) mlabsize(vsmall) mlabc(stc4) mc(stc4)) ///
 		(function y=x, range(0 .6) lp(dash) lw(medthick)), ///
-		ytitle(Observed) xtitle(Counterfactual) title(Downward mobility) legend(off) ///
-		xlabel(0 .15 "15%" .3 "30%" .45 "45%" .6 "60%", grid gmin gmax glcolor(gs12)) ///
-		ylabel(0 .15 "15%" .3 "30%" .45 "45%" .6 "60%", grid gmin gmax glcolor(gs12)) ///
+		ytitle(Observed) xtitle(Counterfactual) title(Downward mobility, size(medium)) legend(off) ///
+		xlabel(0 .15 "15%" .3 "30%" .45 "45%" .6 "60%", grid gmin gmax glcolor(gs12) glp(shortdash)) ///
+		ylabel(0 .15 "15%" .3 "30%" .45 "45%" .6 "60%", grid gmin gmax glcolor(gs12) glp(shortdash)) ///
 		name(cf2_b2, replace)  
 
-	graph combine cf2_b1 cf2_b2, title(B. Across countries and cohorts, size(medium) margin(medium)) name(cf2_byc, replace) imargin(small)
+	graph combine cf2_b1 cf2_b2, title(B. Across countries and cohorts, size(medium) margin(medium) pos(11)) ///
+		name(cf2_byc, replace) imargin(small) 
 
-	graph combine cf2_av cf2_byc, imargin(medium) ysize(3) xsize(6.5) scale(*1.2)
-	graph save "${results}\F6_iph.eps", replace 
+	graph combine cf2_av cf2_byc, imargin(large) ysize(3) xsize(6.25) scale(*1.2) 
 	graph save "${results}\F6_iph.gph", replace 
-	graph export "${results}\F6_iph.png", replace	
+	graph export "${results}\F6_iph.jpg", width(3750) replace	
 	
 	
 /*	To check the absolute difference in observed-counterfactual across countries
